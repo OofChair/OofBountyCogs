@@ -45,8 +45,8 @@ class ServerPing(commands.Cog):
 
     @commands.command()
     async def pingversion(self, ctx):
-    """Check what version the cog is on."""
-    await ctx.send(f"This cog is on version {self.__version__}.")
+        """Check what version the cog is on."""
+        await ctx.send(f"This cog is on version {self.__version__}.")
 
 
 # Ping avg return: {ping.avg}
