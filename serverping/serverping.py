@@ -35,8 +35,9 @@ class ServerPing(commands.Cog):
         """Ping a server or an IP. \n\n**Pinging a specific port will not work. This is due to restrictions with the lib.**"""
         ping = Ping(server)
         embed = discord.Embed(title=f"Pinged {server}!")
+        embed = discord.Embed(color=(await ctx.embed_colour()))
         embed.add_field(
-            name=f"Server returned {ping.avg}!",
+            name=f"Server returned {ping.avg} ms!",
             value=f"It returned {ping.returncode} error(s)!",
             inline=False,
         )
