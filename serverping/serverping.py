@@ -1,5 +1,5 @@
 from typing import Literal
-from ping import Ping
+from simple-ping import Ping
 
 import discord
 from redbot.core import commands

@@ -1,5 +1,11 @@
-from .serverping import setup
+import json
+from pathlib import Path
 
-__red_end_user_data_statement__ = (
-    "This cog does not persistently store data or metadata about users."
-)
+from redbot.core.bot import Red
+
+from .serverping import ServerPing
+
+with open(Path(__file__).parent / "info.json") as fp:
+
+    async def setup(bot: Red) -> None:
+        bot.add_cog(ServerPing(bot))

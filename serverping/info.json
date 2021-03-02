@@ -8,7 +8,7 @@
         "OofChair"
     ],
     "required_cogs": {},
-    "requirements": ["simple-ping"],
+    "requirements": ["git+https://github.com/OofChair/simple-ping"],
     "tags": [
         "ping",
         "fun"
