@@ -4,6 +4,7 @@ from pathlib import Path
 from redbot.core.bot import Red
 
 from .serverping import ServerPing
+from .serverping import setup
 
 with open(Path(__file__).parent / "info.json") as fp:
 
