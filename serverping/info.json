@@ -8,7 +8,7 @@
         "OofChair"
     ],
     "required_cogs": {},
-    "requirements": ['simple-ping'],
+    "requirements": ["simple-ping"],
     "tags": [
         "ping",
         "fun"
