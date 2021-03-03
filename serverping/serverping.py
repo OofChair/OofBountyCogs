@@ -47,17 +47,17 @@ class ServerPing(commands.Cog):
         server, changed = self.setup_string(server)
         msg = None
         if changed:
-            msg = await ctx.send(content=f"I have edited your address to be pingable... ({server})")
+            msg = await ctx.send(content=f"I have edited your address to be pingable... (**{server}**)")
         await ctx.trigger_typing()
         ping = Ping(server)
         embed = discord.Embed(color=(await ctx.embed_colour()))
         embed = discord.Embed(title=f"Pinged {server}!")
         embed.add_field(
-            name=f"Server returned {ping.avg} ms!",
-            value=f"It returned {ping.returncode} error(s)!",
+            name=f":green_circle: **Server returned {ping.avg} ms!**",
+            value=f"**It returned {ping.returncode} error(s)!**",
             inline=False,
         )
-        embed.set_footer(text=f"I pinged {server}")
+        embed.set_footer(text=f"I pinged {server}!")
         if msg is not None:
             await msg.delete()
         await ctx.send(embed=embed)
