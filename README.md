@@ -10,3 +10,5 @@ These cogs have been made for bounties.
 ### Join my support server [here](https://pwnbot.xyz/support)
 ### My DMs are always open, you can DM me at OofChair#0001.
 
+## Credits:
+### Thank you to [@Just-Jojo](https://github.com/Just-Jojo) for the help with the ServerPing cog
