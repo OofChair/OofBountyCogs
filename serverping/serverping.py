@@ -8,7 +8,7 @@ from redbot.core.config import Config
 
 RequestType = Literal["discord_deleted_user", "owner", "user", "user_strict"]
 
-__version__ = "0.0.1"
+__version__ = "1.0.0"
 
 
 class ServerPing(commands.Cog):
