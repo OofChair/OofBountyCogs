@@ -52,3 +52,4 @@ class ServerPing(commands.Cog):
 
 # Ping avg return: {ping.avg}
 # Ping errors return: {ping.returncode}
+# TODO: ADD ERROR HANDLING FOR RETURNCODE +1
