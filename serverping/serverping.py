@@ -45,8 +45,9 @@ class ServerPing(commands.Cog):
     async def serverping(self, ctx, server: str):
         """Ping a server or an IP. \n\n**Pinging a specific port will not work. This is due to restrictions with the lib.** \n\nExample request: `[p]serverping oofchair.xyz` Adding https://, adding a trailing slash, or adding something after the / will cause this to not work."""
         server, changed = self.setup_string(server)
+        msg = None
         if changed:
-            await ctx.send(content=f"I have edited your address to be pingable... ({server})", delete_after=3)
+            msg = await ctx.send(content=f"I have edited your address to be pingable... ({server})")
         await ctx.trigger_typing()
         ping = Ping(server)
         embed = discord.Embed(color=(await ctx.embed_colour()))
@@ -57,6 +58,8 @@ class ServerPing(commands.Cog):
             inline=False,
         )
         embed.set_footer(text=f"I pinged {server}")
+        if msg is not None:
+            await msg.delete()
         await ctx.send(embed=embed)
 
     @commands.command()
