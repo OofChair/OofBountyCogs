@@ -32,7 +32,7 @@ class ServerPing(commands.Cog):
 
     @commands.command()
     async def serverping(self, ctx, server):
-        """Ping a server or an IP. \n\n**Pinging a specific port will not work. This is due to restrictions with the lib.** \n\nExample request: `[p]serverping oofchair.xyz` Adding https:// or adding a trailing slash will cause this to not work."""
+        """Ping a server or an IP. \n\n**Pinging a specific port will not work. This is due to restrictions with the lib.** \n\nExample request: `[p]serverping oofchair.xyz` Adding https://, adding a trailing slash, or adding something after the / will cause this to not work."""
         ping = Ping(server)
         embed = discord.Embed(color=(await ctx.embed_colour()))
         embed = discord.Embed(title=f"Pinged {server}!")
