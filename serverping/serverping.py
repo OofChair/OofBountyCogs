@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Tuple
 from simple_ping import Ping
 
 import discord
@@ -30,18 +30,24 @@ class ServerPing(commands.Cog):
         """Nothing to delete"""
         return
     
-    def setup_string(self, item: str) -> str:
+    def setup_string(self, item: str) -> Tuple[str, bool]:
         """Set a string as a url"""
+        changed = False
         if item.startswith("https://"):
             item = item[8:]
+            changed = True
         if "/" in item:
             item = item.split("/")[0]
-        return item
+            changed = True
+        return item, changed
 
     @commands.command()
     async def serverping(self, ctx, server: str):
         """Ping a server or an IP. \n\n**Pinging a specific port will not work. This is due to restrictions with the lib.** \n\nExample request: `[p]serverping oofchair.xyz` Adding https://, adding a trailing slash, or adding something after the / will cause this to not work."""
-        server = self.setup_string(server)
+        server, changed = self.setup_string(server)
+        if changed:
+            await ctx.send(content=f"I have edited your address to be pingable... ({server})", delete_after=3)
+        await ctx.trigger_typing()
         ping = Ping(server)
         embed = discord.Embed(color=(await ctx.embed_colour()))
         embed = discord.Embed(title=f"Pinged {server}!")
