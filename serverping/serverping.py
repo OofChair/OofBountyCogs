@@ -27,12 +27,21 @@ class ServerPing(commands.Cog):
     async def red_delete_data_for_user(
         self, *, requester: RequestType, user_id: int
     ) -> None:
-        # TODO: Replace this with the proper end user data removal handling.
-        super().red_delete_data_for_user(requester=requester, user_id=user_id)
+        """Nothing to delete"""
+        return
+    
+    def setup_string(self, item: str) -> str:
+        """Set a string as a url"""
+        if item.startswith("https://"):
+            item = item[8:]
+        if "/" in item:
+            item = item.split("/")[0]
+        return item
 
     @commands.command()
-    async def serverping(self, ctx, server):
+    async def serverping(self, ctx, server: str):
         """Ping a server or an IP. \n\n**Pinging a specific port will not work. This is due to restrictions with the lib.** \n\nExample request: `[p]serverping oofchair.xyz` Adding https://, adding a trailing slash, or adding something after the / will cause this to not work."""
+        server = self.setup_string(server)
         ping = Ping(server)
         embed = discord.Embed(color=(await ctx.embed_colour()))
         embed = discord.Embed(title=f"Pinged {server}!")
